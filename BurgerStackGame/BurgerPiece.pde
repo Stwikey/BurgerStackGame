@@ -1,7 +1,12 @@
 class BurgerPiece{
-  BurgerPiece(){
+  PVector accel = new PVector(0, 0);
+  PVector pos = new PVector(0, 0);
+  PVector speed = new PVector(0, 0);
+  BurgerPiece(PVector initialPos, PVector acceleration){
+    pos = initialPos;
+    accel = acceleration;
   }
-  void drawLettuce(PVector pos){
+  void drawLettuce(){
     //green colour for lettuce
     fill(144, 227, 119);
     //draw the lettuce
@@ -17,7 +22,7 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
-  void drawPatty(PVector pos){
+  void drawPatty(){
     //brown colour for patty
     fill(108, 99, 93);
     
@@ -31,7 +36,7 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
-  void drawTomato(PVector pos){
+  void drawTomato(){
     //red colour for tomato
     fill(250, 70, 38);
     
@@ -44,7 +49,7 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
-  void drawCheese(PVector pos){
+  void drawCheese(){
     //yellow colour for cheese
     fill(245, 240, 82);
     
@@ -57,7 +62,7 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
-  void drawBun(PVector pos){
+  void drawBun(){
     //beige colour for buns
     fill(203, 189, 148);
     //drawing the bun
@@ -77,6 +82,11 @@ class BurgerPiece{
     ellipse(pos.x, pos.y + 2, 5, 5);
     ellipse(pos.x + 10, pos.y + 5, 5, 5);
     ellipse(pos.x + 17, pos.y, 5, 5);
+  }
+  
+  void updatePiece(){
+    speed.add(accel);
+    pos.add(speed);
   }
   
   
