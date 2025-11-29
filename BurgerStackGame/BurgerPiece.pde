@@ -44,16 +44,16 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
-  void drawCheese(){
+  void drawCheese(PVector pos){
     //yellow colour for cheese
     fill(245, 240, 82);
     
     //drawing the cheese
     beginShape();
-    vertex(220, 260);
-    vertex(300, 260);
-    vertex(300, 265);
-    vertex(220, 265);
+    vertex(pos.x - 40, pos.y - 2.5);
+    vertex(pos.x + 40, pos.y - 2.5);
+    vertex(pos.x + 40, pos.y + 2.5);
+    vertex(pos.x - 40, pos.y + 2.5);
     endShape(CLOSE);
   }
   
