@@ -57,5 +57,28 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
+  void drawBun(){
+    //beige colour for buns
+    fill(203, 189, 148);
+    
+    //drawing the bun
+    beginShape();
+    vertex(220, 260);
+    vertex(300, 260);
+    vertex(300, 280);
+    vertex(220, 280);
+    endShape(CLOSE);
+    
+    //lighter colour for seeds
+    fill(245, 236, 213);
+    
+    //drawing the seeds
+    ellipse(230, 272, 5, 5);
+    ellipse(240, 275, 5, 5);
+    ellipse(260, 272, 5, 5);
+    ellipse(270, 275, 5, 5);
+    ellipse(287, 270, 5, 5);
+  }
+  
   
 }
