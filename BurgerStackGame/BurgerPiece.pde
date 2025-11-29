@@ -6,7 +6,6 @@ class BurgerPiece{
     fill(144, 227, 119);
     //draw the lettuce
     beginShape();
-    //(160, 210)
     vertex(pos.x - 40, pos.y - 10);
     vertex(pos.x + 30, pos.y - 10);
     for(float i = pos.x + 40; i >= pos.x - 50; i-= 10){
@@ -18,16 +17,17 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
-  void drawPatty(){
+  void drawPatty(PVector pos){
     //brown colour for patty
     fill(108, 99, 93);
     
     //drawing the patty
+    //260, 270
     beginShape();
-    vertex(220, 260);
-    vertex(300, 260);
-    vertex(300, 280);
-    vertex(220, 280);
+    vertex(pos.x - 40, pos.y - 10);
+    vertex(pos.x + 40, pos.y - 10);
+    vertex(pos.x + 40, pos.y + 10);
+    vertex(pos.x - 40, pos.y + 10);
     endShape(CLOSE);
   }
   
