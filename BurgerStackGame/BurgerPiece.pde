@@ -17,4 +17,17 @@ class BurgerPiece{
     }
     endShape(CLOSE);
   }
+  
+  void drawPatty(){
+    //brown colour for patty
+    fill(108, 99, 93);
+    
+    //drawing the patty
+    beginShape();
+    vertex(220, 260);
+    vertex(300, 260);
+    vertex(300, 280);
+    vertex(220, 280);
+    endShape(CLOSE);
+  }
 }
