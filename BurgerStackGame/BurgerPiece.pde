@@ -1,18 +1,18 @@
 class BurgerPiece{
   BurgerPiece(){
   }
-  void drawLettuce(){
+  void drawLettuce(PVector pos){
     //green colour for lettuce
     fill(144, 227, 119);
     //draw the lettuce
     beginShape();
-    vertex(120, 200);
-    vertex(190, 200);
-    for(int i = 200; i >= 110; i-= 5){
-      if(i%10 == 0){
-        vertex(i, 217);
-      }else{
-        vertex(i, 215);
+    //(160, 210)
+    vertex(pos.x - 40, pos.y - 10);
+    vertex(pos.x + 30, pos.y - 10);
+    for(float i = pos.x + 40; i >= pos.x - 50; i-= 10){
+      vertex(i, pos.y + 7);
+      if(i > (pos.x-50)){
+        vertex(i - 5, pos.y + 5);
       }
     }
     endShape(CLOSE);
