@@ -25,6 +25,12 @@ class BurgerMenu{
       println(menu.get(i));
     }
     return menu;
-    
+  }
+  
+  void drawMenu(ArrayList<String> menu){
+    for(int i = 0; i < menu.size(); i++){
+      BurgerPiece piece = new BurgerPiece(new PVector(340, i + 20*(i+1)), new PVector(0, 0));
+      piece.drawPiece(menu.get(i));
+    }
   }
 }

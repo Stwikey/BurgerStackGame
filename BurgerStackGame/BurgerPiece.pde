@@ -11,16 +11,30 @@ class BurgerPiece{
     fill(144, 227, 119);
     //draw the lettuce
     beginShape();
-    vertex(pos.x - 40, pos.y - 10);
-    vertex(pos.x + 30, pos.y - 10);
-    for(float i = pos.x + 40; i >= pos.x - 50; i-= 10){
+    vertex(pos.x - 35, pos.y - 10);
+    vertex(pos.x + 35, pos.y - 10);
+    for(float i = pos.x + 40; i >= pos.x - 40; i-= 10){
       vertex(i, pos.y + 7);
-      if(i > (pos.x-50)){
+      if(i > (pos.x-40)){
         vertex(i - 5, pos.y + 5);
       }
     }
     endShape(CLOSE);
   }
+  void drawPiece(String piece){
+    if (piece == "Patty"){
+      drawPatty();
+    }else if (piece == "Tomato"){
+      drawTomato();
+    }else if (piece == "Cheese"){
+      drawCheese();
+    }else if (piece == "Bun"){
+      drawBun();
+    }else if (piece == "Lettuce"){
+      drawLettuce();
+    }
+  }
+  
   
   void drawPatty(){
     //brown colour for patty
