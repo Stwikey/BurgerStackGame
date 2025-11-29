@@ -31,16 +31,16 @@ class BurgerPiece{
     endShape(CLOSE);
   }
   
-  void drawTomato(){
+  void drawTomato(PVector pos){
     //red colour for tomato
     fill(250, 70, 38);
     
     //drawing the tomato
     beginShape();
-    vertex(220, 260);
-    vertex(300, 260);
-    vertex(300, 270);
-    vertex(220, 270);
+    vertex(pos.x - 40, pos.y - 5);
+    vertex(pos.x + 40, pos.y - 5);
+    vertex(pos.x + 40, pos.y + 5);
+    vertex(pos.x - 40, pos.y + 5);
     endShape(CLOSE);
   }
   
