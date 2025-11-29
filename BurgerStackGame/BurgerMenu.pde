@@ -1,0 +1,4 @@
+class BurgerMenu{
+  BurgerMenu(){
+  }
+}
