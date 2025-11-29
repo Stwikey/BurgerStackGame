@@ -30,4 +30,17 @@ class BurgerPiece{
     vertex(220, 280);
     endShape(CLOSE);
   }
+  
+  void drawTomato(){
+    //red colour for tomato
+    fill(250, 70, 38);
+    
+    //drawing the patty
+    beginShape();
+    vertex(220, 260);
+    vertex(300, 260);
+    vertex(300, 270);
+    vertex(220, 270);
+    endShape(CLOSE);
+  }
 }
