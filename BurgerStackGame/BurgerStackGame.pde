@@ -21,16 +21,28 @@ void draw(){
       spawner.fallPiece.remove(i);
       spawner.fallSize.remove(i);
       spawner.fallStr.remove(i);
+    }else if(plate.platePiece.size() > 0){
+      if(isCollide(plate.platePiece.get(plate.platePiece.size()-1).pos, spawner.fallPiece.get(i).pos, plate.plateSize.get(plate.platePiece.size()-1), spawner.fallPiece.get(i).size)){
+        plate.platePiece.add(new BurgerPiece(new PVector(0, 0), new PVector(0, 0), 1));
+        plate.plateSize.add(spawner.fallSize.get(i));
+        plate.plateStr.add(spawner.fallStr.get(i));
+        plate.updatePlate();
+     
+        spawner.fallPiece.remove(i);
+        spawner.fallSize.remove(i);
+        spawner.fallStr.remove(i);
+      }
     }else if(isCollide(plate.pos, spawner.fallPiece.get(i).pos, 10, spawner.fallPiece.get(i).size)){
-      plate.platePiece.add(new BurgerPiece(new PVector(0, 0), new PVector(0, 0), 1));
-      plate.plateSize.add(spawner.fallSize.get(i));
-      plate.plateStr.add(spawner.fallStr.get(i));
-      plate.updatePlate();
-   
-      spawner.fallPiece.remove(i);
-      spawner.fallSize.remove(i);
-      spawner.fallStr.remove(i);
+        plate.platePiece.add(new BurgerPiece(new PVector(0, 0), new PVector(0, 0), 1));
+        plate.plateSize.add(spawner.fallSize.get(i));
+        plate.plateStr.add(spawner.fallStr.get(i));
+        plate.updatePlate();
+     
+        spawner.fallPiece.remove(i);
+        spawner.fallSize.remove(i);
+        spawner.fallStr.remove(i);
     }
+    
 
   }
 
