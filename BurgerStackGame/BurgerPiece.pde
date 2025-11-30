@@ -95,9 +95,9 @@ class BurgerPiece{
     //drawing the seeds
     ellipse(pos.x - (30*size), pos.y + (2*size), 5*size, 5*size);
     ellipse(pos.x - (20*size), pos.y + (5*size), 5*size, 5*size);
-    ellipse(pos.x*size, pos.y + 2*size, 5*size, 5*size);
+    ellipse(pos.x, pos.y + 2*size, 5*size, 5*size);
     ellipse(pos.x + 10*size, pos.y + 5*size, 5*size, 5*size);
-    ellipse(pos.x + 17*size, pos.y*size, 5*size, 5*size);
+    ellipse(pos.x + 17*size, pos.y, 5*size, 5*size);
   }
   
   void updatePiece(){

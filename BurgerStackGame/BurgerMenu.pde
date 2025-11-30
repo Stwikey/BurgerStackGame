@@ -28,8 +28,10 @@ class BurgerMenu{
   }
   
   void drawMenu(ArrayList<String> menu){
+    fill(255);
+    rect(320, 0, 80, 140);
     for(int i = 0; i < menu.size(); i++){
-      BurgerPiece piece = new BurgerPiece(new PVector(340, i + 20*(i+1)), new PVector(0, 0), 0.5);
+      BurgerPiece piece = new BurgerPiece(new PVector(360, i + 20*(i+1)), new PVector(0, 0), 0.55);
       piece.drawPiece(menu.get(i));
     }
   }
