@@ -2,6 +2,8 @@ int score = 0;
 BurgerMenu menu = new BurgerMenu();
 BurgerSpawner spawner = new BurgerSpawner();
 Plate plate = new Plate(new PVector(0, 0));
+int maxTime = 10;
+int timer = 0;
 ArrayList<String> menuStr = new ArrayList<String>();
 void setup(){
   size(400, 400);
@@ -11,6 +13,12 @@ void setup(){
 
 void draw(){
   background(255);
+  timer++;
+  maxTime = 50 - score*10;
+  if(timer >= maxTime){
+    timer = 0;
+    spawner.spawnBurger(1 + score);
+  }
   menu.drawMenu(menuStr);
   spawner.updatePieces();
   plate.updatePlate();
@@ -25,13 +33,6 @@ void draw(){
   text(score, 200, 50);
   
 }
-
-void keyPressed(){
-  spawner.spawnBurger(1 + score);
-}
-
-
-
 boolean isCollide(PVector pos1, PVector pos2, float h1, float h2){
   if(abs(pos1.y - pos2.y) <= (h2/2 + h1/2) && abs(pos1.x - pos2.x) <= 20) {
     println("hit");
