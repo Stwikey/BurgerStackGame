@@ -1,5 +1,6 @@
 BurgerMenu menu = new BurgerMenu();
 BurgerSpawner spawner = new BurgerSpawner();
+Plate plate = new Plate(new PVector(0, 0));
 ArrayList<String> menuStr = new ArrayList<String>();
 void setup(){
   size(400, 400);
