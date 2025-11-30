@@ -1,7 +1,9 @@
 class BurgerSpawner{
   ArrayList<BurgerPiece> fallPiece = new ArrayList<BurgerPiece>();
   ArrayList<String> fallStr = new ArrayList<String>();
+  ArrayList<Integer> fallSize = new ArrayList<Integer>();
   String[] pieces = {"Lettuce", "Patty", "Tomato", "Cheese", "Bun"};
+  int[] size = {20, 20, 10, 5, 20};
   
   BurgerSpawner(){
     
@@ -12,6 +14,7 @@ class BurgerSpawner{
     PVector acceleration = new PVector(0, score*0.01);
     fallPiece.add(new BurgerPiece(position, acceleration, 1));
     fallStr.add(pieces[rand]);
+    fallSize.add(size[rand]);
   }
   
   void updatePieces(){
