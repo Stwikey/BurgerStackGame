@@ -16,6 +16,53 @@ void draw(){
   plate.updatePlate();
   plate.pos = new PVector(mouseX, 390);
   plate.drawPlate();
+  updatePieces();
+  if(checkMenu()){
+    print("ey");
+  }
+  
+  for(int i = 0; i < plate.plateStr.size(); i++){
+    print(plate.plateStr.get(i) + " ");
+  }
+}
+
+void keyPressed(){
+  spawner.spawnBurger(1);
+}
+
+
+
+boolean isCollide(PVector pos1, PVector pos2, float h1, float h2){
+  if(abs(pos1.y - pos2.y) <= (h2/2 + h1/2) && abs(pos1.x - pos2.x) <= 20) {
+    println("hit");
+    return true;
+  }else{
+    return false;
+  }
+}
+
+boolean checkMenu(){
+  if (plate.platePiece.size() >= menuStr.size()){
+    for(int i = 1; i <= menuStr.size(); i++){
+      if(plate.plateStr.get(plate.plateStr.size()-i) != menuStr.get(i-1)){
+        return false;
+      }
+    }
+    for(int i = 1; i <= menuStr.size(); i++){
+      plate.platePiece.remove(plate.plateStr.size()-1);
+      plate.plateSize.remove(plate.plateStr.size()-1);
+      plate.plateStr.remove(plate.plateStr.size()-1);
+      plate.updatePlate();
+    }
+    menuStr = menu.generateMenu();
+    menu.drawMenu(menuStr);
+    return true;
+  }else{
+    return false;
+  }
+}
+
+void updatePieces(){
   for(int i = 0; i < spawner.fallPiece.size(); i++){
     if(spawner.fallPiece.get(i).pos.y >= 450){
       spawner.fallPiece.remove(i);
@@ -44,19 +91,5 @@ void draw(){
     }
     
 
-  }
-
-}
-
-void keyPressed(){
-  spawner.spawnBurger(1);
-}
-
-boolean isCollide(PVector pos1, PVector pos2, float h1, float h2){
-  if(abs(pos1.y - pos2.y) <= (h2/2 + h1/2) && abs(pos1.x - pos2.x) <= 20) {
-    println("hit");
-    return true;
-  }else{
-    return false;
   }
 }
