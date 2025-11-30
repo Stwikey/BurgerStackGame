@@ -1,4 +1,5 @@
 BurgerMenu menu = new BurgerMenu();
+BurgerSpawner spawner = new BurgerSpawner();
 void setup(){
   size(400, 400);
   noStroke();
@@ -6,5 +7,10 @@ void setup(){
 }
 
 void draw(){
-  //background(255);
+  background(255);
+  spawner.updatePieces();
+}
+
+void keyPressed(){
+  spawner.spawnBurger(1);
 }
