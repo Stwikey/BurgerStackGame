@@ -13,16 +13,27 @@ void draw(){
   background(255);
   menu.drawMenu(menuStr);
   spawner.updatePieces();
+  plate.updatePlate();
   plate.pos = new PVector(mouseX, 390);
   plate.drawPlate();
   for(int i = 0; i < spawner.fallPiece.size(); i++){
-    if(isCollide(plate.pos, spawner.fallPiece.get(i).pos, 10, spawner.fallPiece.get(i).size)||spawner.fallPiece.get(i).pos.y >= 450){
+    if(spawner.fallPiece.get(i).pos.y >= 450){
+      spawner.fallPiece.remove(i);
+      spawner.fallSize.remove(i);
+      spawner.fallStr.remove(i);
+    }else if(isCollide(plate.pos, spawner.fallPiece.get(i).pos, 10, spawner.fallPiece.get(i).size)){
+      plate.platePiece.add(new BurgerPiece(new PVector(0, 0), new PVector(0, 0), 1));
+      plate.plateSize.add(spawner.fallSize.get(i));
+      plate.plateStr.add(spawner.fallStr.get(i));
+      plate.updatePlate();
+   
       spawner.fallPiece.remove(i);
       spawner.fallSize.remove(i);
       spawner.fallStr.remove(i);
     }
 
   }
+
 }
 
 void keyPressed(){
