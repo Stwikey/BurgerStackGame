@@ -1,3 +1,4 @@
+int score = 0;
 BurgerMenu menu = new BurgerMenu();
 BurgerSpawner spawner = new BurgerSpawner();
 Plate plate = new Plate(new PVector(0, 0));
@@ -5,7 +6,6 @@ ArrayList<String> menuStr = new ArrayList<String>();
 void setup(){
   size(400, 400);
   noStroke();
-  
   menuStr = menu.generateMenu();
 }
 
@@ -17,17 +17,17 @@ void draw(){
   plate.pos = new PVector(mouseX, 390);
   plate.drawPlate();
   updatePieces();
-  if(checkMenu()){
-    print("ey");
-  }
+  checkMenu();
+  fill(0);
+  textSize(20);
+  text("MENU", 335, 150);
+  textSize(50);
+  text(score, 200, 50);
   
-  for(int i = 0; i < plate.plateStr.size(); i++){
-    print(plate.plateStr.get(i) + " ");
-  }
 }
 
 void keyPressed(){
-  spawner.spawnBurger(1);
+  spawner.spawnBurger(1 + score);
 }
 
 
@@ -56,6 +56,7 @@ boolean checkMenu(){
     }
     menuStr = menu.generateMenu();
     menu.drawMenu(menuStr);
+    score++;
     return true;
   }else{
     return false;
