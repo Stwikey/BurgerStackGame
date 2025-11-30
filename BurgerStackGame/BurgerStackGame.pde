@@ -1,13 +1,16 @@
 BurgerMenu menu = new BurgerMenu();
 BurgerSpawner spawner = new BurgerSpawner();
+ArrayList<String> menuStr = new ArrayList<String>();
 void setup(){
   size(400, 400);
   noStroke();
-  menu.drawMenu(menu.generateMenu());
+  
+  menuStr = menu.generateMenu();
 }
 
 void draw(){
   background(255);
+  menu.drawMenu(menuStr);
   spawner.updatePieces();
 }
 
