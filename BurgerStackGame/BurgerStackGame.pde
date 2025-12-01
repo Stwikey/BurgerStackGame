@@ -4,6 +4,7 @@ BurgerSpawner spawner = new BurgerSpawner();
 Plate plate = new Plate(new PVector(0, 0));
 int maxTime = 10;
 int timer = 0;
+boolean gameState = false;
 ArrayList<String> menuStr = new ArrayList<String>();
 void setup(){
   size(400, 400);
@@ -13,6 +14,7 @@ void setup(){
 
 void draw(){
   background(255);
+  drawBounds();
   timer++;
   maxTime = 50 - score*10;
   if(timer >= maxTime){
@@ -31,11 +33,15 @@ void draw(){
   text("MENU", 335, 150);
   textSize(50);
   text(score, 200, 50);
-  
+  if(plate.platePiece.size() > 0){
+    if((plate.platePiece.get(plate.platePiece.size()-1).pos.y <= 20 + plate.plateSize.get(plate.platePiece.size()-1)/2)){
+      gameState = true;
+    }
+  }
+ 
 }
 boolean isCollide(PVector pos1, PVector pos2, float h1, float h2){
   if(abs(pos1.y - pos2.y) <= (h2/2 + h1/2) && abs(pos1.x - pos2.x) <= 20) {
-    println("hit");
     return true;
   }else{
     return false;
@@ -94,4 +100,9 @@ void updatePieces(){
     
 
   }
+}
+
+void drawBounds(){
+  fill(255, 0, 0);
+  rect(0, 20, 400, 5);
 }
