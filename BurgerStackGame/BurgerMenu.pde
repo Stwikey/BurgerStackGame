@@ -21,9 +21,6 @@ class BurgerMenu{
       }
     }
     menu.add("Bun");
-    for(int i = 0; i< menu.size(); i++){
-      println(menu.get(i));
-    }
     return menu;
   }
   

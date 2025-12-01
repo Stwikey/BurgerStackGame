@@ -13,32 +13,35 @@ void setup(){
 }
 
 void draw(){
-  background(255);
-  drawBounds();
-  timer++;
-  maxTime = 50 - score*10;
-  if(timer >= maxTime){
-    timer = 0;
-    spawner.spawnBurger(1 + score);
-  }
-  menu.drawMenu(menuStr);
-  spawner.updatePieces();
-  plate.updatePlate();
-  plate.pos = new PVector(mouseX, 390);
-  plate.drawPlate();
-  updatePieces();
-  checkMenu();
-  fill(0);
-  textSize(20);
-  text("MENU", 335, 150);
-  textSize(50);
-  text(score, 200, 50);
-  if(plate.platePiece.size() > 0){
-    if((plate.platePiece.get(plate.platePiece.size()-1).pos.y <= 20 + plate.plateSize.get(plate.platePiece.size()-1)/2)){
-      gameState = true;
+  if(gameState){
+    background(255);
+    drawBounds();
+    timer++;
+    maxTime = 50 - score*10;
+    if(timer >= maxTime){
+      timer = 0;
+      spawner.spawnBurger(1 + score);
     }
+    menu.drawMenu(menuStr);
+    spawner.updatePieces();
+    plate.updatePlate();
+    plate.pos = new PVector(mouseX, 390);
+    plate.drawPlate();
+    updatePieces();
+    checkMenu();
+    fill(0);
+    textSize(20);
+    text("MENU", 335, 150);
+    textSize(50);
+    text(score, 200, 50);
+    if(plate.platePiece.size() > 0){
+      if((plate.platePiece.get(plate.platePiece.size()-1).pos.y <= 20 + plate.plateSize.get(plate.platePiece.size()-1)/2)){
+        gameState = false;
+      }
+    }
+  }else{
+    playScreen();
   }
- 
 }
 boolean isCollide(PVector pos1, PVector pos2, float h1, float h2){
   if(abs(pos1.y - pos2.y) <= (h2/2 + h1/2) && abs(pos1.x - pos2.x) <= 20) {
@@ -68,6 +71,7 @@ boolean checkMenu(){
   }else{
     return false;
   }
+  
 }
 
 void updatePieces(){
@@ -105,4 +109,27 @@ void updatePieces(){
 void drawBounds(){
   fill(255, 0, 0);
   rect(0, 20, 400, 5);
+}
+
+void playScreen(){
+  println("Your Score is: " + score);
+  timer = 0;
+  score = 0;
+  menuStr = menu.generateMenu();
+  plate.platePiece = new ArrayList<BurgerPiece>();
+  plate.plateSize = new ArrayList<Integer>();
+  plate.plateStr = new ArrayList<String>();
+  spawner.fallPiece = new ArrayList<BurgerPiece>();
+  spawner.fallSize =  new ArrayList<Integer>();
+  spawner.fallStr= new ArrayList<String>();
+  
+  
+  background(255);
+  fill(0, 255, 0);
+  ellipse(200, 200, 100, 100);
+  fill(255);
+  triangle(190, 180, 190, 220, 220, 200);
+  if(mousePressed && mouseX >= 150 && mouseX <= 250 && mouseY >= 150 && mouseY <= 250){
+    gameState = true;
+  }
 }
